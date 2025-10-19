@@ -81,4 +81,20 @@ button{
   border-radius: 5px;
   color: #10D486;
 }
+#input-El{
+  width: 200px;
+  padding: 10px 10px;
+  color: #FAFFFD;
+  background-color:#21242B;
+  border: none;
+  text-align: center;
+  font-size: 12px;
+  border-radius: 5px;
+  margin-left: 70px;
+}
+
+#input-El:focus{
+  border: 1px solid #10D486;
+  outline: none;
+}
 
