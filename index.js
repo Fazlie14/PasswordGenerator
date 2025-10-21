@@ -111,13 +111,16 @@ function generateRandomArr() {
 generateBtn.addEventListener("click", function () {
   if (inputEl.value === 0 || inputEl.value === "" || isNaN(inputEl.value)) {
     inputEl.style.border = "1px solid red";
-    errorMessage.textContent = "⚠️ Please Enter password Length!";
+    errorMessage.textContent = "⚠️ Please Enter password Length";
+  } else if (inputEl.value < 7) {
+    errorMessage.textContent = "⚠️ Please Enter password Length 7 up!";
   } else {
+    
     inputEl.style.border = "";
     errorMessage.textContent = "";
     displayOneEl.textContent = "";
     displayTwoEl.textContent = "";
+    generateRandomArr();
+    
   }
-
-  generateRandomArr();
 });
