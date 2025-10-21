@@ -125,3 +125,33 @@ generateBtn.addEventListener("click", function () {
     
   }
 });
+
+// ...existing code...
+
+// Add these functions after the existing code
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        // Optional: Show feedback that text was copied
+        
+        errorMessage.textContent = "✓ Password copied!";
+        setTimeout(() => {
+            errorMessage.textContent = "";
+        }, 1500);
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+}
+
+// Add click event listeners to both display elements
+displayOneEl.addEventListener("click", function() {
+  
+    if (this.textContent) {
+        copyToClipboard(this.textContent);
+    }
+});
+
+displayTwoEl.addEventListener("click", function() {
+    if (this.textContent) {
+        copyToClipboard(this.textContent);
+    }
+});
