@@ -74,41 +74,61 @@ let generateBtn = document.getElementById("generate-Btn");
 let inputEl = document.getElementById("input-El")
 let errorMessage = document.getElementById("error-El");
 
+//let inputValue = parseInt(inputEl.value);
+let listArrOne = ""
+let listArrTwo = ""
+
+const getRandomArr = JSON.parse(localStorage.getItem("randomArr"))
+const getRandomArrTwo = JSON.parse(localStorage.getItem("randomArrTwo"))
+
+
+if (getRandomArr && getRandomArrTwo) {
+  listArrOne = getRandomArr
+  listArrTwo = getRandomArrTwo
+  generateRandomArr()
+}
+
+function generateRandomArr() {
+
+  for (let i = 0; i < parseInt(inputEl.value); i++) {
+    let randomIndexOne = Math.floor(Math.random() * randomArr.length);
+    let randomIndexTwo = Math.floor(Math.random() * randomArr.length);
+    listArrOne += randomArr[randomIndexOne];
+    listArrTwo += randomArr[randomIndexTwo];
+
+  }
+  displayOneEl.textContent = listArrOne
+  displayTwoEl.textContent = listArrTwo
+
+  localStorage.setItem("randomArr", JSON.stringify(listArrOne))
+  localStorage.setItem("randomArrTwo", JSON.stringify(listArrTwo))
+
+  inputEl.value = ""
+
+}
+
+
 
 
 generateBtn.addEventListener("click", function () {
-  
- 
-  let inputValue = parseInt(inputEl.value);
 
-  if(inputEl.value === 0 || inputEl.value === "" || isNaN(inputValue)){
+
+  if (inputEl.value === 0 || inputEl.value === "" || isNaN(inputEl.value)) {
     inputEl.style.border = "1px solid red";
     errorMessage.textContent = "⚠️ Please Enter password Length!";
-    
-  }else{
+
+  } else {
     inputEl.style.border = "";
     errorMessage.textContent = "";
     displayOneEl.textContent = "";
     displayTwoEl.textContent = "";
   }
 
-  
-  
-  
-  for (let i = 0; i < inputValue; i++) {
-    let randomIndexOne = Math.floor(Math.random() * randomArr.length);
-    let randomIndexTwo = Math.floor(Math.random() * randomArr.length);
-    displayOneEl.textContent += randomArr[randomIndexOne];
-    displayTwoEl.textContent += randomArr[randomIndexTwo];
-  }
-  
-  
- 
-  inputEl.value = ""
+  generateRandomArr()
 
-  
 
 });
+
 
 
 
