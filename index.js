@@ -113,6 +113,7 @@ generateBtn.addEventListener("click", function () {
     inputEl.style.border = "1px solid red";
     errorMessage.textContent = "⚠️ Please Enter password Length";
   } else if (inputEl.value < 7) {
+    inputEl.style.border = "1px solid red";
     errorMessage.textContent = "⚠️ Please Enter password Length 7 up!";
   } else {
     
